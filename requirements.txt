@@ -1,6 +1,6 @@
 streamlit
 numpy
 opencv-python
-tensorflow
+tensorflow<=2.5.3
 keras
 Pillow
