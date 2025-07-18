@@ -5,7 +5,9 @@ import tensorflow as tf
 from PIL import Image
 
 # Load the trained model
-model = tf.keras.models.load_model("model.h5")
+# model = tf.keras.models.load_model("model.h5")
+model = tf.keras.models.load_model("model.keras")
+
 
 # Title
 st.title("🧠 Brain Tumor Detection")
