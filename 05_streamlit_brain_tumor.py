@@ -4,9 +4,6 @@ import cv2
 import tensorflow as tf
 from PIL import Image
 
-# Load the trained model
-model = tf.keras.models.load_model("model.h5")
-
 
 # Title
 st.title("🧠 Brain Tumor Detection")
@@ -24,6 +21,10 @@ def preprocess_image(img):
     return img_array
 
 # Predict
+
+model = tf.keras.models.load_model("model.h5")
+
+
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded MRI", use_container_width=True)
