@@ -24,7 +24,6 @@ def preprocess_image(img):
     return img_array
 
 
-# Rebuild architecture
 model = Sequential([
     Conv2D(32, (3,3), activation='relu', input_shape=(150,150,1)),
     MaxPooling2D(2,2),
@@ -36,8 +35,10 @@ model = Sequential([
     Dense(2, activation='softmax')
 ])
 
+
 # Load weights
-model.load_weights("model.weights.h5")
+model.load_weights("model.weights.h5")  # ✅ correct extension
+
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
