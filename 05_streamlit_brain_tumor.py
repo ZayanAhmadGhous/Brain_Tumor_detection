@@ -21,8 +21,7 @@ def preprocess_image(img):
     return img_array
 
 # Predict
-
-model = tf.keras.models.load_model("model.h5")
+model = tf.keras.models.load_model("model.keras")
 
 
 if uploaded_file is not None:
