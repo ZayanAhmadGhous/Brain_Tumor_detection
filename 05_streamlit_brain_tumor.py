@@ -2,6 +2,9 @@ import streamlit as st
 import numpy as np
 import cv2
 import tensorflow as tf
+import tensorflow as tf
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 from PIL import Image
 
 
@@ -21,10 +24,6 @@ def preprocess_image(img):
     return img_array
 
 
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
-
 # Rebuild architecture
 model = Sequential([
     Conv2D(32, (3,3), activation='relu', input_shape=(150,150,1)),
@@ -39,10 +38,6 @@ model = Sequential([
 
 # Load weights
 model.load_weights("model.weights.h5")
-
-# Predict
-model = tf.keras.models.load_model("model.keras")
-
 
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
