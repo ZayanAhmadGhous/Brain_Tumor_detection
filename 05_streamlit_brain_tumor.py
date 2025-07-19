@@ -2,11 +2,9 @@ import streamlit as st
 import numpy as np
 import cv2
 import tensorflow as tf
-import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout
 from PIL import Image
-
 
 # Title
 st.title("🧠 Brain Tumor Detection")
@@ -23,7 +21,7 @@ def preprocess_image(img):
     img_array = img_array.reshape(1, 150, 150, 1) / 255.0
     return img_array
 
-
+# Model architecture
 model = Sequential([
     Conv2D(32, (3,3), activation='relu', input_shape=(150,150,1)),
     MaxPooling2D(2,2),
@@ -35,11 +33,10 @@ model = Sequential([
     Dense(2, activation='softmax')
 ])
 
+# ✅ Load trained weights (not save!)
+model.load_weights("model.weights.h5")
 
-# Load weights
-model.load_weights("model.weights.h5")  # ✅ correct extension
-
-
+# Prediction
 if uploaded_file is not None:
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded MRI", use_container_width=True)
